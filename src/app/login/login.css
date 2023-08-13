@@ -1,0 +1,116 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5em;
+    margin-left: 10em;
+}
+
+.card-externo {
+    position: relative;
+    width: 40em;
+    height: 30em;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    box-shadow: 0.2em 0.2em 0.5em;
+}
+
+.card-interno {
+    position: absolute;
+    width: 28em;
+    height: 25em;
+    border-radius: 30px;
+    top: 2em;
+    right: 23em;
+    background-color: #16956F;
+    box-shadow: 0.0em 0.2em 0.5em;
+}
+
+.right {
+    float: right;
+    margin-right: 2em;
+    margin-top: 5em;
+}
+
+.group-form {
+    display: grid;
+    margin-top: 10px;
+}
+
+.input-form {
+    padding: 10px;
+    width: 18em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #dddddd;
+}
+
+.input-form:focus {
+    outline: none;
+    border-color: #16956F;
+    box-shadow: 0.0em 0.0em 0.1em #16956F;
+}
+
+.input-form:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.button {
+    padding: 10px 20px;
+    /* Espaciado interno (padding) del botón */
+    border: none;
+    /* Quita el borde predeterminado */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    font-size: 16px;
+    /* Tamaño de la fuente */
+    color: #fff;
+    /* Color del texto del botón */
+    background-color: #16956f;
+    /* Color de fondo del botón */
+    cursor: pointer;
+}
+
+.button:focus {
+    outline: none;
+    /* Quita el resaltado predeterminado al enfocar el botón */
+    box-shadow: 0 0 5px #107e5d;
+}
+
+.button:hover {
+    background-color: #107e5d;
+    /* Cambia el color de fondo del botón al pasar el mouse por encima */
+}
+
+.button:active {
+    background-color: #107e5d;
+}
+
+.people-card {
+    position: relative;
+    top: 150px;
+    right: 45px;
+    float: right;
+}
+
+.texto-descricao {
+    color: white;
+    position: relative;
+    top: 20px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.text-font {
+    font-family: 'Inter', sans-serif;
+}
+
+.link-forgot {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.link-forgot a {
+    text-decoration: none;
+}

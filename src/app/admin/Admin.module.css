@@ -1,0 +1,28 @@
+.buttonIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px #245dff solid;
+    background: transparent;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.9s ease;
+}
+
+.buttonIcon:hover {
+    background-color: #245dff;
+}
+
+.table {
+    display:inline-grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.tableItem {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
