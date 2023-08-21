@@ -34,45 +34,47 @@ export default function Admin() {
     }
 
     return (
-        <Paper sx={{width: '50%', overflow: 'hidden', backgroundColor: '#2196f3'}}>
-            <TableContainer sx={{maxHeight: 200}}>
-                <Table stickyHeader={true} aria-label="stickyHeader table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell
-                                align={'center'}
-                                style={{minWidth: 170}}
-                            >
-                                Nome
-                            </TableCell>
-                            <TableCell
-                                align={'center'}
-                                style={{minWidth: 170}}
-                            >
-                                Email
-                            </TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {data.map(item => (
-                            <TableRow key={item.id}>
-                                <TableCell align={'center'}>{item.name}</TableCell>
-                                <TableCell align={'center'}>{item.email}</TableCell>
+        <div className='conteudo'>
+            <Paper sx={{width: '50%', overflow: 'hidden', backgroundColor: '#2196f3'}}>
+                <TableContainer sx={{maxHeight: 200}}>
+                    <Table stickyHeader={true} aria-label="stickyHeader table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell
+                                    align={'center'}
+                                    style={{minWidth: 170}}
+                                >
+                                    Nome
+                                </TableCell>
+                                <TableCell
+                                    align={'center'}
+                                    style={{minWidth: 170}}
+                                >
+                                    Email
+                                </TableCell>
                             </TableRow>
-                        ))}
+                        </TableHead>
+                        <TableBody>
+                            {data.map(item => (
+                                <TableRow key={item.id}>
+                                    <TableCell align={'center'}>{item.name}</TableCell>
+                                    <TableCell align={'center'}>{item.email}</TableCell>
+                                </TableRow>
+                            ))}
 
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[10, 25, 100]}
-                component="div"
-                count={data.length}
-                rowsPerPage={rowsPePage}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-        </Paper>
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <TablePagination
+                    rowsPerPageOptions={[10, 25, 100]}
+                    component="div"
+                    count={data.length}
+                    rowsPerPage={rowsPePage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                />
+            </Paper>
+        </div>
     )
 }

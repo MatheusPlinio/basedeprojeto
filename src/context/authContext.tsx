@@ -12,6 +12,7 @@ import {
 type User = {
     name: string;
     email: string;
+    access_token: string;
 };
 
 // Tipagem do AuthContext
@@ -43,7 +44,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     // Modulo de Login
     const login = async (email: string, password: string) => {
         try {
-            const response = await fetch('http://localhost:8000/api/auth/login', {
+            const response = await fetch('http://localhost:8000/api/auth/authenticated', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -53,7 +54,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 
             if (response.ok) {
                 const user: User = await response.json();
-                localStorage.setItem("user", JSON.stringify(user));
+                localStorage.setItem("user", JSON.stringify(user.access_token));
                 setUser(user);
                 window.location.replace("http://localhost:3000");
             } else {

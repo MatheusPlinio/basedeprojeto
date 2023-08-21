@@ -2,3 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.conteudo {
+    display: flex;
+    background-color: whitesmoke;
+    width: 93%;
+    position: absolute;
+    top: 5em;
+    left: 5em;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px black;
+}
