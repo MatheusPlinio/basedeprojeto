@@ -11,8 +11,6 @@ export async function UserFetch(): Promise<UserAccess[]> {
     try {
         const token = localStorage.getItem('user')
 
-        console.log('teste', token)
-
         const response = await axios.get<UserAccess[]>('http://localhost:8000/api/admin/user', {
             headers: {
                 Authorization: `Bearer ${token}`

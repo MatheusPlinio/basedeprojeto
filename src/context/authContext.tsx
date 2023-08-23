@@ -12,7 +12,6 @@ import {
 type User = {
     name: string;
     email: string;
-    access_token: string;
 };
 
 // Tipagem do AuthContext
@@ -44,17 +43,17 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     // Modulo de Login
     const login = async (email: string, password: string) => {
         try {
-            const response = await fetch('http://localhost:8000/api/auth/authenticated', {
+            const response = await fetch('http://localhost:8000/api/login', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({email, password}),
+                body: JSON.stringify({ email, password }),
             });
 
             if (response.ok) {
                 const user: User = await response.json();
-                localStorage.setItem("user", JSON.stringify(user.access_token));
+                localStorage.setItem("user", JSON.stringify(user));
                 setUser(user);
                 window.location.replace("http://localhost:3000");
             } else {
@@ -67,12 +66,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     // Modulo de Cadastro de usuário
     const signUp = async (name: string, email: string, password: string) => {
         try {
-            const response = await fetch('http://localhost:8000/api/auth/register', {
+            const response = await fetch(`${host}/api/auth/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({name, email, password}),
+                body: JSON.stringify({ name, email, password }),
             });
 
             if (response.ok) {
@@ -92,12 +91,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         let accessToken = null;
         if (token !== null) {
             const user = JSON.parse(token);
-            accessToken = user.access_token;
+            accessToken = user.token;
+            console.log(accessToken)
         }
 
+
         try {
-            const response = await fetch("http://localhost:8000/api/auth/logout", {
-                method: "POST",
+            const response = await fetch('http://localhost:8000/api/logout', {
+                method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${accessToken}`,
@@ -107,6 +108,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
             if (response.ok) {
                 localStorage.removeItem("user");
                 setUser(null);
+                window.location.replace("http://localhost:3000");
             } else {
                 throw new Error("Logout failed");
             }
@@ -116,7 +118,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     };
 
     return (
-        <AuthContext.Provider value={{user, login, logout, signUp}}>
+        <AuthContext.Provider value={{ user, login, logout, signUp }}>
             {children}
         </AuthContext.Provider>
     );
