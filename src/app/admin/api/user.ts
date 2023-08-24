@@ -1,5 +1,6 @@
 import axios from "axios";
 import TokenAuth from "@/hooks/TokenAuth";
+import {HttpGET} from "@/hooks/ApiHttp";
 
 export interface UserAccess {
     id: number;
@@ -10,12 +11,10 @@ export interface UserAccess {
 
 export async function UserFetch(): Promise<UserAccess[]> {
     try {
-        const response = await axios.get<UserAccess[]>('http://localhost:8000/api/user', {
-            headers: {
-                Authorization: `Bearer ${TokenAuth()}`
-            }
-        });
-        return response.data;
+        let host = process.env.NEXT_API_ROUTE
+
+        const data = await HttpGET('http://localhost:8000/api/user')
+        return data;
     } catch (error) {
         throw new Error('Error for fetchDataAccess');
     }

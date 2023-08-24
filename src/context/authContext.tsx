@@ -92,9 +92,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         if (token !== null) {
             const user = JSON.parse(token);
             accessToken = user.token;
-            console.log(accessToken)
+            // console.log(accessToken)
         }
-
 
         try {
             const response = await fetch('http://localhost:8000/api/logout', {
