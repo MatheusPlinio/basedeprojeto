@@ -1,4 +1,5 @@
 import axios from "axios";
+import TokenAuth from "@/hooks/TokenAuth";
 
 export interface UserAccess {
     id: number;
@@ -9,11 +10,9 @@ export interface UserAccess {
 
 export async function UserFetch(): Promise<UserAccess[]> {
     try {
-        const token = localStorage.getItem('user')
-
-        const response = await axios.get<UserAccess[]>('http://localhost:8000/api/admin/user', {
+        const response = await axios.get<UserAccess[]>('http://localhost:8000/api/user', {
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${TokenAuth()}`
             }
         });
         return response.data;

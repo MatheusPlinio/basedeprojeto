@@ -66,7 +66,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     // Modulo de Cadastro de usuário
     const signUp = async (name: string, email: string, password: string) => {
         try {
-            const response = await fetch(`${host}/api/auth/register`, {
+            const response = await fetch('http://localhost/api/auth/register', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
